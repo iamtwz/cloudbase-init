@@ -18,6 +18,7 @@ _OPT_PATHS = (
     'cloudbaseinit.conf.cloudconfig.CloudConfigOptions',
     'cloudbaseinit.conf.cloudstack.CloudStackOptions',
     'cloudbaseinit.conf.default.GlobalOptions',
+    'cloudbaseinit.conf.aliyun.AliyunOptions',
     'cloudbaseinit.conf.ec2.EC2Options',
     'cloudbaseinit.conf.maas.MAASOptions',
     'cloudbaseinit.conf.openstack.OpenStackOptions',
