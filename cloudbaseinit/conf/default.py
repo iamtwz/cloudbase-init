@@ -114,7 +114,7 @@ class GlobalOptions(conf_base.Options):
                 help='Configures the network interfaces MTU based on the '
                      'values provided via DHCP'),
             cfg.StrOpt(
-                'username', default='Admin', help='User to be added to the '
+                'username', default='Administrator', help='User to be added to the '
                 'system or updated if already existing'),
             cfg.ListOpt(
                 'groups', default=['Administrators'],
