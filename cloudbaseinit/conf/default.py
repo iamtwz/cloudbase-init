@@ -174,8 +174,6 @@ class GlobalOptions(conf_base.Options):
                     'cloudbaseinit.plugins.common.mtu.MTUPlugin',
                     'cloudbaseinit.plugins.windows.ntpclient'
                     '.NTPClientPlugin',
-                    'cloudbaseinit.plugins.common.sethostname'
-                    '.SetHostNamePlugin',
                     'cloudbaseinit.plugins.windows.createuser'
                     '.CreateUserPlugin',
                     'cloudbaseinit.plugins.common.networkconfig'
