@@ -136,7 +136,7 @@ class GlobalOptions(conf_base.Options):
                 help='Configures NTP client time synchronization using '
                      'the NTP servers provided via DHCP'),
             cfg.BoolOpt(
-                'real_time_clock_utc', default=False,
+                'real_time_clock_utc', default=True,
                 help='Sets the real time clock to use universal time (True) '
                      'or local time (False)'),
             cfg.BoolOpt(
