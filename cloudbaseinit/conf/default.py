@@ -183,8 +183,6 @@ class GlobalOptions(conf_base.Options):
                     'cloudbaseinit.plugins.windows.extendvolumes'
                     '.ExtendVolumesPlugin',
                     'cloudbaseinit.plugins.common.userdata.UserDataPlugin',
-                    'cloudbaseinit.plugins.common.setuserpassword.'
-                    'SetUserPasswordPlugin',
                     'cloudbaseinit.plugins.windows.winrmlistener.'
                     'ConfigWinRMListenerPlugin',
                     'cloudbaseinit.plugins.windows.winrmcertificateauth.'
