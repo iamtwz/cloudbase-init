@@ -20,7 +20,7 @@ from cloudbaseinit import conf as cloudbaseinit_conf
 from cloudbaseinit.metadata.services import base
 from cloudbaseinit.metadata.services import baseopenstackservice as baseos
 from cloudbaseinit.utils import network
-
+from cloudbaseinit.utils.windows import wmi_loader
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
 
@@ -37,6 +37,19 @@ class HttpService(base.BaseHTTPMetadataService, baseos.BaseOpenStackService):
 
     def load(self):
         super(HttpService, self).load()
+        try:
+            wmi = wmi_loader.wmi()
+            conn = wmi.WMI()
+            system = conn.Win32_ComputerSystem()[0]
+            if system.Model != 'OpenStack Nova':
+                LOG.debug('System model is not OpenStack Nova, bypassed. Model: %s' % system.Model)
+                return False
+            else:
+                LOG.debug('Detected OpenStack Nova.')
+        except Exception as ex:
+            LOG.exception(ex)
+            LOG.error('Failed to get system model, ignored.')
+
         if CONF.openstack.add_metadata_private_ip_route:
             network.check_metadata_ip_route(CONF.openstack.metadata_base_url)
 

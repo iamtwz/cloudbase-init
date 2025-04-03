@@ -16,6 +16,7 @@ from oslo_log import log as oslo_logging
 
 from cloudbaseinit import conf as cloudbaseinit_conf
 from cloudbaseinit.metadata.services import base
+from cloudbaseinit.utils.windows import wmi_loader
 
 CONF = cloudbaseinit_conf.CONF
 LOG = oslo_logging.getLogger(__name__)
@@ -33,6 +34,18 @@ class AliyunService(base.BaseHTTPMetadataService):
 
     def load(self):
         super(AliyunService, self).load()
+        try:
+            wmi = wmi_loader.wmi()
+            conn = wmi.WMI()
+            system = conn.Win32_ComputerSystem()[0]
+            if system.Model != 'Alibaba Cloud ECS':
+                LOG.debug('System model is not Alibaba Cloud ECS, bypassed. Model: %s' % system.Model)
+                return False
+            else:
+                LOG.debug('Detected Alibaba Cloud ECS.')
+        except Exception as ex:
+            LOG.exception(ex)
+            LOG.error('Failed to get system model, ignored.')
 
         try:
             self.get_instance_id()
