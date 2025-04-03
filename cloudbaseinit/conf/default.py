@@ -160,8 +160,8 @@ class GlobalOptions(conf_base.Options):
             cfg.ListOpt(
                 'metadata_services',
                 default=[
-                    'cloudbaseinit.metadata.services.aliyunservice.AliyunService',
                     'cloudbaseinit.metadata.services.httpservice.HttpService',
+                    'cloudbaseinit.metadata.services.aliyunservice.AliyunService',
                     'cloudbaseinit.metadata.services.ec2service.EC2Service',
                 ],
                 help='List of enabled metadata service classes, '
